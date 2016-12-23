@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+
+  get 'static_pages/help'
+
   get 'users/index'
   # :~ でパラメータを取得. パラメーターはparamsに入る.
   # to~ 指定したコントローラーに飛び, #~ ~の処理(アクション)をしろという意味
