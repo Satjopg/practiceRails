@@ -1,3 +1,17 @@
 <%= provide(:title, "Home") %>
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<% # jumbotronもCSSクラスの一部でBootStrapの識別子という理解でおけ %>
+<div class="center jumbotron">
+  <h1>Welcome to the My First App</h1>
+
+  <h2>
+    This is the home page for the
+    <a href="http://railstutorial.jp/">Ruby on Rails Tutorial</a>
+    sample application.
+  </h2>
+
+<% # ログイン機能を作成したいので現在はダミーで作成 %>
+  <%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>
+</div>
+<% # image_tagを利用するとassets/imagesから探してくれる %>
+<%= link_to image_tag("rails.png", alt: "Rails logo"),
+            'http://rubyonrails.org/' %>
