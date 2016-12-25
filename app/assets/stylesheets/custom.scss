@@ -1,2 +1,6 @@
+// .scss: Sass(Sassy CSS)というCSSを拡張した言語で書かれたファイル
+
+// bootstrap(とsprockets)をインポート.とりあえずこれでサイトに反映される.
+// sprockets: JS(CSS...などなど)とrailsの結合(bootstrapはCSS(Sass)で書かれているのでそれのパイプ役のイメージ)
 @import "bootstrap-sprockets";
 @import "bootstrap";
