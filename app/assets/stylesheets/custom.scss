@@ -5,6 +5,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// 繰り返す使うものは変数として宣言できる(SaSSのみ)
+$light-gray: #777;
+$gray-medium-light: #eaeaea;
+
 // universal(全てのページに共通して適応するCSSを記述)
 
 // ページ上部に指定した分の余白をあける
@@ -23,10 +27,9 @@ textarea {
 // テキストは中央揃えにする
 .center {
   text-align: center;
-}
-
-.center h1 {
-  margin-bottom: 10px;
+  h1 {
+    margin-bottom: 10px;
+  }
 }
 
 /* テキストの見栄え */
@@ -49,14 +52,13 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
+  color: $gray-light;
 }
 
 p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-
 
 /* ヘッダー部分に関する記述 */
 
@@ -66,17 +68,16 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
+  color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
-}
-
-// :hoverは「マウンスポインタがのったら」という意味
-#logo:hover {
-  color: #00CCFF;
-  text-decoration: none;
+  // :hoverは「マウンスポインタがのったら」という意味
+  &:hover {
+    color: #00CCFF;
+    text-decoration: none;
+  }
 }
 
 /* フッターのレイアウト */
@@ -85,33 +86,28 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #777;
-}
-
-// aタグ(どっかへのリンク)の記述(色を少しだけ強調)
-footer a {
-  color: #555;
-}
-
-// カーソルがのったときの変化
-footer a:hover {
-  color: #222;
-}
-
-// スモールタグは左寄せ
-footer small {
-  float: left;
-}
-
-// リスト全体は右に寄せ
-footer ul {
-  float: right;
-  list-style: none;
-}
-
-// リストの要素は左に寄せる. margin-leftは左の間隔.
-footer ul li {
-  float: left;
-  margin-left: 15px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  // aタグ(どっかへのリンク)の記述(色を少しだけ強調)
+  a {
+    color: $gray;
+    // カーソルがのったときの変化
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  // スモールタグは左寄せ
+  small {
+    float: left;
+  }
+  // リスト全体は右に寄せ
+  ul {
+    float: right;
+    list-style: none;
+    // リストの要素は左に寄せる. margin-leftは左の間隔.
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
 }

@@ -15,6 +15,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def new
+  end
+
   def nonparameter
     @user = Hash.new { |hash, key| raise(IndexError, "user[#{key}] has no value")}
     @user[:name] = "No User"

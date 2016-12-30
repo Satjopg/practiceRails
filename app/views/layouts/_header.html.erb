@@ -6,7 +6,7 @@
  # link_to: railsでのリンクの生成
  # 引数1:テキスト名 引数2:リンク先
 %>
-<%= link_to "First app", '#', id: "logo" %>
+<%= link_to "First app", root_path, id: "logo" %>
 <% # navタグ: 囲われたところがnavigation barの要素を表している %>
 <nav>
   <%
@@ -14,8 +14,8 @@
   # liタグ: リスト内のアイテムを指す(リスト自体を指しているわけではない.)
   %>
   <ul class="nav navbar-nav navbar-right">
-    <li><%= link_to "Home",   '#' %></li>
-    <li><%= link_to "Help",   '#' %></li>
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Help", help_path %></li>
     <li><%= link_to "Log in", '#' %></li>
   </ul>
 </nav>
