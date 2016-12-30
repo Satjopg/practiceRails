@@ -3,52 +3,29 @@
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%
-    # 以下, 条件付きコメント
-    # 今回は, IE9未満の場合はHTML5.jsをインクルードする, という意味
-    # IE9未満はHTML5を読み込めないので, 読み込ませるためのプログラムであるHTML5.jsを適用する。
+    # render:viewでの使用法は部分テンプレート(particial)を呼び出すときである.
+    # particial:そのまま書くと長くて全体の可読性が損なわれる..., 何度も繰り返して使いたい！ときに使うもの.
+    #           再利用したい部品が書かれているものと理解.
+    # 注意点はファイルの命名である. particialファイルの名前は最初「 _ 」から始める。
+    # そして, 呼び出し側では「 _ 」を取って呼び出す. 下記では_shimというparticialを呼び出している.
      %>
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
-      </script>
-    <![endif]-->
+    <%= render "layouts/shim" %>
   </head>
 
   <%
   # 以下, 表示される要素(つまりbodyタグ)を記述していく
-  # header: 上部の要素を表す
+  # header: 上部の要素を表す(particialに記載)
   # div: 表示領域を表す
    %>
-
   <body>
-    <% # navbar...などはCSSクラスの部品名. BootStrapを適応する際に識別する %>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-    <% # containerも同じくCSSクラス %>
-  <div class="container">
-    <%
-     # link_to: railsでのリンクの生成
-     # 引数1:テキスト名 引数2:リンク先
-    %>
-    <%= link_to "First app", '#', id: "logo" %>
-    <% # navタグ: 囲われたところがnavigation barの要素を表している %>
-    <nav>
-      <%
-      # ulタグ: 順不同リストであることを表している
-      # liタグ: リスト内のアイテムを指す(リスト自体を指しているわけではない.)
-      %>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   '#' %></li>
-        <li><%= link_to "Help",   '#' %></li>
-        <li><%= link_to "Log in", '#' %></li>
-      </ul>
-    </nav>
-  </div>
-  <% # containerもBootStrapで識別するためのCSSクラスの部品名 %>
-  <div class="container">
-    <%= yield %>
-  </div>
+    <%= render "layouts/header" %>
+    <% # containerもBootStrapで識別するためのCSSクラスの部品名 %>
+    <div class="container">
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    </div>
   </body>
 </html>

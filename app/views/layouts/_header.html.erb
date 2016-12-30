@@ -1,0 +1,23 @@
+<% # navbar...などはCSSクラスの部品名. BootStrapを適応する際に識別する %>
+<header class="navbar navbar-fixed-top navbar-inverse">
+<% # containerも同じくCSSクラス %>
+<div class="container">
+<%
+ # link_to: railsでのリンクの生成
+ # 引数1:テキスト名 引数2:リンク先
+%>
+<%= link_to "First app", '#', id: "logo" %>
+<% # navタグ: 囲われたところがnavigation barの要素を表している %>
+<nav>
+  <%
+  # ulタグ: 順不同リストであることを表している
+  # liタグ: リスト内のアイテムを指す(リスト自体を指しているわけではない.)
+  %>
+  <ul class="nav navbar-nav navbar-right">
+    <li><%= link_to "Home",   '#' %></li>
+    <li><%= link_to "Help",   '#' %></li>
+    <li><%= link_to "Log in", '#' %></li>
+  </ul>
+</nav>
+</div>
+</header>

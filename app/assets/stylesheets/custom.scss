@@ -4,3 +4,114 @@
 // sprockets: JS(CSS...などなど)とrailsの結合(bootstrapはCSS(Sass)で書かれているのでそれのパイプ役のイメージ)
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+// universal(全てのページに共通して適応するCSSを記述)
+
+// ページ上部に指定した分の余白をあける
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+// テキストは中央揃えにする
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* テキストの見栄え */
+
+// それぞれのタグに対して行の高さを指定(ここは共通部分なので一括で指定)
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* ヘッダー部分に関する記述 */
+
+// 左上部分に表示されているアプリケーション名に関する記述
+// #の後にはidが入る."logo"というidはapplication.html.erbにて決めている.
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+// :hoverは「マウンスポインタがのったら」という意味
+#logo:hover {
+  color: #00CCFF;
+  text-decoration: none;
+}
+
+/* フッターのレイアウト */
+
+// フッター全体の記載
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+// aタグ(どっかへのリンク)の記述(色を少しだけ強調)
+footer a {
+  color: #555;
+}
+
+// カーソルがのったときの変化
+footer a:hover {
+  color: #222;
+}
+
+// スモールタグは左寄せ
+footer small {
+  float: left;
+}
+
+// リスト全体は右に寄せ
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+// リストの要素は左に寄せる. margin-leftは左の間隔.
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}
