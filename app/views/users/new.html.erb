@@ -1,3 +1,34 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
-<p>This will be a signup page for new users.</p>
+<h1>登録ページ</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+      <% # nameフォームの定義 form_control(BootStrap)を追加することで,エラーメッセージなどをうまく表示してくれる. %>
+
+      <%= f.label :name, "ユーザー名" %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <% # mailフォームの定義 %>
+
+      <%= f.label :mail, "メールアドレス" %>
+      <%= f.email_field :mail, class: 'form-control' %>
+
+      <% # パスワードの定義(こっちはハッシュで変換する) %>
+
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <% # パスワード確認用(カラム名と表示名を変えたいときには下記のように設定できる) %>
+
+      <%= f.label :password_confirmation, "もう一回頼む" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <% # フォーム送信のボタン %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+
+    <% end %>
+  </div>
+</div>

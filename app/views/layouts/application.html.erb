@@ -3,8 +3,8 @@
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media:'all', 'data-turbolinks-track'=> 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track'=> 'reload' %>
     <%
     # render:viewでの使用法は部分テンプレート(particial)を呼び出すときである.
     # particial:そのまま書くと長くて全体の可読性が損なわれる..., 何度も繰り返して使いたい！ときに使うもの.
@@ -20,12 +20,24 @@
   # header: 上部の要素を表す(particialに記載)
   # div: 表示領域を表す
    %>
+
   <body>
     <%= render "layouts/header" %>
+
     <% # containerもBootStrapで識別するためのCSSクラスの部品名 %>
+
     <div class="container">
+
+      <% # flashのメッセージをレイアウトに加える.ここに加えることで, サイト全体に適応される. %>
+
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
       <%= yield %>
+      <% # particialのfooterを呼び出し %>
       <%= render "layouts/footer" %>
+      <% # 開発環境のときのみデバック用の変数を表示する. %>
+      <%= debug(params) if Rails.env.development? %>
     </div>
   </body>
 </html>

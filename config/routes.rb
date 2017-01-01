@@ -7,11 +7,9 @@ Rails.application.routes.draw do
   get '/help', to: 'static_pages#help'
   get '/signup', to: 'users#new'
 
-  get "users/show" , to: "users#show"
-  # :~ でパラメータを取得. パラメーターはparamsに入る.
-  # to~ 指定したコントローラーに飛び, #~ ~の処理(アクション)をしろという意味
-  get 'users/show/:username', to: 'users#show'
-
-  get 'users/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # RESTfulなURLを自動的に生成する
+  # REST:操作の対象となるリソース(下記だとuser)をURLを使って表し、それに対してHTTPメソッドを使って操作を行う.
+  # 例えばGETではリソースを取得し,PUTでは新しいリソースを登録する.
+  # 下記のように書けば, 自動的に生成できる.
+  resources :users
 end

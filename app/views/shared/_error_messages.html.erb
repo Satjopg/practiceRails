@@ -1,0 +1,17 @@
+<% # エラーメッセージを表示するためのパーシャルファイル. 複数のコントローラーを跨ぐパーシャルファイルはsharedディレクトリで管理する(railsの慣習) %>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+
+      <% # pluralize:第１引数が２以上なら第２引数の単語を複数形にする.(英語限定) %>
+
+      The form contains <%= pluralize(@user.errors.count, "error") %>.
+    </div>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
