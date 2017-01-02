@@ -28,7 +28,11 @@
 
     <div class="container">
 
-      <% # flashのメッセージをレイアウトに加える.ここに加えることで, サイト全体に適応される. %>
+      <%
+      # flashのメッセージをレイアウトに加える.ここに加えることで, サイト全体に適応される.
+      # 下記では,BootStrapのAlertと状態(sucsess,info,warnig,danger)に応じたメッセージを表示するようにしている.
+      # 状態とメッセージはコントローラで値の操作を行う.
+      %>
 
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>

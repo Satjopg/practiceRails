@@ -28,6 +28,10 @@ class UsersController < ApplicationController
       # flashの表示自体は, application.html.erb内に記述
       flash[:success] = "Welcome to the Sample App!"
       # 成功したら生成したユーザーページに飛ぶ
+      # redirect_to @user == redirect_to "/users/#{@user.id}"と考えておけ.
+      # ただしこれはモデルをroutesでresourcesで宣言している必要がある.
+      # これは厳密に言えば,redirect_to @user が redirect_to user_url(id: @user.id)とuser_urlを利用しているからである.
+      # (名前付きルーティングで設定しただけでは生成されないので注意.)
       redirect_to @user
     else
       render 'new'

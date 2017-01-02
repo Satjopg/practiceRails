@@ -1,0 +1,26 @@
+<% provide(:title, "Log in") %>
+<h1>Log in!!</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+<%=
+# session情報を渡していく.
+# form_forはユーザー登録でも使ったがこの場合はUserモデルがあったので引数に@userのように指定するだけで済んだ.
+# (ちなみにこの場合は, /usersのPOSTであると自動的に解釈してくれている.)
+# しかし,Sessionの場合はモデルがないので下記のようにリソースとPATHを指定する必要がある.
+%>
+
+    <%= form_for(:session, url: login_path) do |f| %>
+      <%= f.label :mail %>
+      <%= f.email_field :mail, class: "form-control" %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control" %>
+
+      <%= f.submit "Login!!", class: "btn btn-primary" %>
+    <% end %>
+
+    <p> New User? <%= link_to "Sign Up Now!", signup_path %> </p>
+  </div>
+</div>
