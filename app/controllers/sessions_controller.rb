@@ -15,6 +15,11 @@ class SessionsController < ApplicationController
       # ログイン成功時
       # user情報をsessionで保持(メソッド自体はhelperに定義)
       log_in user
+      # 3項演算.評価値がtrueの時左,falseの時は右.
+      # 論理値? ?何かをする :別のことをする
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+      # ユーザー情報を保持しておくために永続セッションを作成
+      remember(user)
       # 取得したuserのページに飛ぶ
       redirect_to user
     else
@@ -30,7 +35,8 @@ class SessionsController < ApplicationController
 
 # sessionを壊す,つまりログアウト
   def destroy
-    log_out
+    # 現在ログインしているユーザーがいる時のみlog_outを行う.
+    log_out if logged_in?
     # ホームをひらく
     redirect_to root_url
   end
