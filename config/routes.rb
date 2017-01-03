@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # 名前月ルーティングにすることで, 必要なものだけを加えられる.
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
-  delete '/login', to: 'sessions#destroy'
+  delete '/logout', to: 'sessions#destroy'
 
   # 名前付きルーティング.まあ,名前の通り.
   # /help でstatic_pagesのhelpを表示するという意味になる。

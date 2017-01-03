@@ -13,6 +13,10 @@ class SessionsController < ApplicationController
     # rubyの場合, nil or false以外はtrueと判断されるのでauthenticateで真偽判定ができる.
     if user && user.authenticate(params[:session][:password])
       # ログイン成功時
+      # user情報をsessionで保持(メソッド自体はhelperに定義)
+      log_in user
+      # 取得したuserのページに飛ぶ
+      redirect_to user
     else
       # 失敗時
       # 状態とメッセージを送ることでlayoutで設定していたもの(application.html.erb参照)に反映される.
@@ -24,7 +28,11 @@ class SessionsController < ApplicationController
     end
   end
 
+# sessionを壊す,つまりログアウト
   def destroy
+    log_out
+    # ホームをひらく
+    redirect_to root_url
   end
 
 end

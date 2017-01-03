@@ -11,9 +11,6 @@ class UsersController < ApplicationController
     # find_by: 指定したカラムから, 当てはまったものの(最初の１件目の)情報を返す。
     # 引数: (カラム名 => 探す値)
     @user = User.find(params[:id])
-    if @user.nil? then
-      nonparameter
-    end
   end
 
   def new
@@ -27,6 +24,8 @@ class UsersController < ApplicationController
       # flash:主に簡易的なメッセージを通知するために使う.この場合は, ログイン成功時に表示するという意味.
       # flashの表示自体は, application.html.erb内に記述
       flash[:success] = "Welcome to the Sample App!"
+      # 自動的にログインする.
+      log_in @user
       # 成功したら生成したユーザーページに飛ぶ
       # redirect_to @user == redirect_to "/users/#{@user.id}"と考えておけ.
       # ただしこれはモデルをroutesでresourcesで宣言している必要がある.
@@ -36,15 +35,6 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def nonparameter
-    @user = Hash.new { |hash, key| raise(IndexError, "user[#{key}] has no value")}
-    @user[:name] = "No User"
-    @user[:username] = "noname"
-    @user[:mail] = "hoge@nouser.jp"
-    @user[:location] = "no location"
-    @user[:about] = "いません"
   end
 
 # パラメータを外部から見られないようにprivateで定義(Strong Parameter)
